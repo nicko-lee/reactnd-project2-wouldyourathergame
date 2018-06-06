@@ -22,7 +22,7 @@ export default function Nav () {
           </NavLink>
         </li>
         <li>
-          <NavLink to='/new' activeClassName='active'>
+          <NavLink to='/login' activeClassName='active'>
             Logout
           </NavLink>
         </li>

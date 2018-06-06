@@ -15,7 +15,7 @@ class App extends Component {
     return (
       <BrowserRouter>
           <Fragment>
-            {true==false
+            {true==true
             ? <div>
                 <Header />
                 <Nav />
