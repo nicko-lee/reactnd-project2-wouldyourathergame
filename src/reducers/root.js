@@ -1,6 +1,4 @@
 import {
-    MOCK_TYPE,
-    ANOTHER_TYPE,
     LOGIN,
     LOGOUT,
     GET_USERS,
@@ -9,23 +7,6 @@ import {
 import { combineReducers } from 'redux';
 
 // REDUCERS
-export const mockReducer = (state = 0, { type, value }) => {
-    switch(type) {
-        case MOCK_TYPE:
-            return value + 100;
-        default:   
-            return state;
-    }
-};
-
-export const anotherReducer = (state = 0, { type, value }) => {
-    switch(type) {
-        case ANOTHER_TYPE:
-            return value - 100;
-        default:   
-            return state;
-    }
-};
 
 export const authReducer = (state = false, { type, value }) => {
     switch(type) {
@@ -61,7 +42,5 @@ export const questionsReducer = (state = {}, { type, value }) => {
 export default combineReducers({
     authedUser: authReducer,
     users: usersReducer,
-    questions: questionsReducer,
-    mock: mockReducer,
-    another: anotherReducer
+    questions: questionsReducer
 });
