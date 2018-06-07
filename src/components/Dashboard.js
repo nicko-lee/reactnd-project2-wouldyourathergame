@@ -1,4 +1,5 @@
 import React from 'react'
+import Leaderboard from './Leaderboard';
 
 const Dashboard = () => (
     <div className="dashboard">

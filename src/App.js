@@ -9,13 +9,15 @@ import AddPoll from './components/AddPoll';
 import PollItem from './components/PollItem';
 import Leaderboard from './components/Leaderboard';
 import Login from './components/Login';
+import { connect } from 'react-redux';
 
 class App extends Component {
+  
   render() {
     return (
       <BrowserRouter>
           <Fragment>
-            {true==true
+            {this.props.authedUser
             ? <div>
                 <Header />
                 <Nav />
@@ -31,4 +33,10 @@ class App extends Component {
   }
 }
 
-export default App;
+function mapStateToProps (state) {
+  return {
+    authedUser: state.authedUser
+  }
+}
+
+export default connect(mapStateToProps)(App)

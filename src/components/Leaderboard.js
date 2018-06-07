@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { mockAction, anotherAction } from '../actions/root';
 
 class Leaderboard extends Component {
-
-    constructor(props) {
-        super(props);
-    }
+    static propTypes = {
+        addition: PropTypes.number.isRequired,
+        subtraction: PropTypes.number.isRequired,
+        callAddition: PropTypes.func.isRequired,  
+        callSubtraction: PropTypes.func.isRequired
+      };
 
     componentWillMount() {
         this.props.callSubtraction();
@@ -36,4 +39,8 @@ const mapDispatchToProps = dispatch => ({
     callSubtraction: () => dispatch(anotherAction())
 }) 
 
+/* exporting a connected component not merely a component so that in App.js you can use that
+   cos realise that the connect function takes in a component and returns a brand new component
+   that React can render
+*/
 export default connect(mapStateToProps, mapDispatchToProps)(Leaderboard);
