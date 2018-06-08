@@ -13,7 +13,6 @@ import { connect } from 'react-redux';
 import { _getUsers, _getQuestions } from './utils/_DATA';
 import { saveUsersToStore, saveQuestionsToStore } from './actions/root';
 
-
 class App extends Component {
   
   componentDidMount = () => {

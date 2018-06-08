@@ -1,9 +1,34 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types'
 
-const PollItem = () => (
-    <div className="poll-item">
-        <h1>Hi I am the Poll Item</h1>
-    </div>
-   );
+class PollItem extends Component {
+    static propTypes = {
+        id: PropTypes.string.isRequired,
+        question: PropTypes.object.isRequired
+    };
 
-   export default PollItem;
+    render() {
+        return (
+            <div className="poll-item">
+                <h2>Would You Rather...</h2>
+                <ul>
+                    <li>
+                        {this.props.question.optionOne.text}
+                    </li>
+                    <li>
+                        {this.props.question.optionTwo.text}
+                    </li>       
+
+                </ul>    
+            </div>
+        );
+
+    }
+}  
+
+const mapStateToProps = (state, ownProps) => ({
+    question: state.questions[ownProps.id]
+})
+
+export default connect(mapStateToProps)(PollItem);

@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { logout } from '../actions/root';
 
-
 class Nav extends Component {
 
   render() {

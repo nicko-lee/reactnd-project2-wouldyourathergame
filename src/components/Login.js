@@ -1,25 +1,12 @@
 import React, { Component } from 'react'
-import { NavLink } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
 import { login } from '../actions/root';
-import { _getUsers } from '../utils/_DATA';
 
 class Login extends Component {
-    // static propTypes = {
-    //     addition: PropTypes.number.isRequired,
-    //     subtraction: PropTypes.number.isRequired,
-    //     callAddition: PropTypes.func.isRequired,  
-    //     callSubtraction: PropTypes.func.isRequired
-    //   };
-
-    // componentWillMount() {
-    //     console.log(this.props.debug)
-    // }
-
-
-
-
+    static propTypes = {
+        users: PropTypes.object.isRequired,
+      };
 
     handleLogin = () => {
         this.props.setAuthedUser();

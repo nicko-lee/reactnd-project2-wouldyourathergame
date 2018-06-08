@@ -12,7 +12,6 @@ class Leaderboard extends Component {
     }
 };
 
-
 /* exporting a connected component not merely a component so that in App.js you can use that
    cos realise that the connect function takes in a component and returns a brand new component
    that React can render
