@@ -9,6 +9,7 @@ import AddPoll from './components/AddPoll';
 import PollItem from './components/PollItem';
 import Leaderboard from './components/Leaderboard';
 import Login from './components/Login';
+import Avatar from './components/Avatar';
 import { connect } from 'react-redux';
 import { _getUsers, _getQuestions } from './utils/_DATA';
 import { saveUsersToStore, saveQuestionsToStore } from './actions/root';
@@ -28,8 +29,9 @@ class App extends Component {
   
   PrivateRoute = () => (
     <Fragment>
-      { !this.props.authedUser ? <Redirect to='/login' /> : (
+      { this.props.authedUser === null ? <Redirect to='/login' /> : (
         <Fragment>
+          <Avatar />
           <Header />
           <Nav />
           <Route path='/' exact component={Dashboard} />

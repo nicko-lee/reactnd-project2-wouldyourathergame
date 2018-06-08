@@ -8,12 +8,12 @@ import { combineReducers } from 'redux';
 
 // REDUCERS
 
-export const authReducer = (state = false, { type, value }) => {
+export const authReducer = (state = null, { type, value }) => {
     switch(type) {
         case LOGIN:
-            return true;
+            return value;
         case LOGOUT:
-            return false;
+            return null;
         default:   
             return state;
     }

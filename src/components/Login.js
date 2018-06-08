@@ -8,12 +8,23 @@ class Login extends Component {
         users: PropTypes.object.isRequired,
       };
 
-    handleLogin = () => {
-        this.props.setAuthedUser();
-        this.props.history.push('/');
+    state = {
+        selectedUser: null,
+        pleaseSelectUserMsg: false 
     }
 
+    handleLogin = () => {
+        if (this.state.selectedUser !== null) {
+            this.props.history.push('/');
+            this.props.setAuthedUser(this.state.selectedUser);
+        } else {
+            this.setState({ pleaseSelectUserMsg: true })
+        }
+    }
 
+    handleSelection = (e) => {
+        this.setState({ selectedUser: e.target.value })
+    }
 
     render() {
         return (
@@ -23,12 +34,13 @@ class Login extends Component {
                 <button type='button' onClick={this.handleLogin}>
                     Login
                 </button>
-                <select>
-                    <option disabled>Move to...</option>
+                <select value={this.state.selectedUser} onChange={this.handleSelection}>
+                    <option disabled selected>Select User...</option>
                     <option value="aragorn">Aragorn Son of Arathorn</option>
                     <option value="gandalf">Gandalf the White</option>
                     <option value="legolas">Legolas</option>
                 </select>
+                {this.state.pleaseSelectUserMsg && this.state.selectedUser ===null && <p>Please select a user</p> }
             </div>
             )
 
@@ -42,7 +54,7 @@ const mapStateToProps = (state) => ({
 
 // this guy updates the store
 const mapDispatchToProps = dispatch => ({
-    setAuthedUser: () => dispatch(login('Jimbo')) 
+    setAuthedUser: (selectedUser) => dispatch(login(selectedUser)) 
 }) 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
