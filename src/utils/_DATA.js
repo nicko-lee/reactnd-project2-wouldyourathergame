@@ -14,7 +14,7 @@ let users = {
     gandalf: {
       id: 'gandalf',
       name: 'Gandalf the White',
-      avatarURL: 'https://static.comicvine.com/uploads/original/11123/111235159/5682581-2286688603-mk20D.jpg',
+      avatarURL: 'http://www.thorineichenschild.de/wp-content/uploads/2011/11/Gandalf-der-weisse-275x300.png',
       answers: {
         "vthrdm985a262al8qx3do": 'optionOne',
         "xj352vofupe1dqz9emx13r": 'optionTwo',

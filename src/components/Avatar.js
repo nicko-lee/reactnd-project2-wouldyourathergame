@@ -4,21 +4,27 @@ import { connect } from 'react-redux';
 
 class Avatar extends Component {
     static propTypes = {
-        authedUser: PropTypes.string.isRequired
+        authedUser: PropTypes.string.isRequired,
+        userInfo: PropTypes.object.isRequired
       };
 
     render() {
         return (
             <div className="avatar">
+                <img
+                    src={this.props.userInfo.avatarURL}
+                    alt={`Avatar of ${this.props.userInfo.name}`}
+                    className='avatar'
+                />
                 <h1>Hi I am {this.props.authedUser}</h1>
             </div>
         );
     }
 };
 
-function mapStateToProps (state) {
+function mapStateToProps (state, ownProps) {
     return {
-      authedUser: state.authedUser
+      userInfo: state.users[ownProps.authedUser]
     }
   }
 

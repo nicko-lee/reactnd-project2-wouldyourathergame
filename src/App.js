@@ -31,7 +31,7 @@ class App extends Component {
     <Fragment>
       { this.props.authedUser === "" ? <Redirect to='/login' /> : (
         <Fragment>
-          <Avatar />
+          <Avatar authedUser={this.props.authedUser}/>
           <Header />
           <Nav />
           <Route path='/' exact component={Dashboard} />
