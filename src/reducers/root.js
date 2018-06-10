@@ -15,7 +15,7 @@ export const authReducer = (state = "", { type, value }) => {
         case LOGIN:
             return value;
         case LOGOUT:
-            return null;
+            return value;
         default:   
             return state;
     }

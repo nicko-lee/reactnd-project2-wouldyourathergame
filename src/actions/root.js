@@ -11,7 +11,7 @@ export const ADD_QUESTION_TO_USER = "ADD_QUESTION_TO_USER";
 
 export const logout = () => ({
     type: LOGOUT,
-    value: false
+    value: ""
 })
 
 export const login = (selectedUser) => ({

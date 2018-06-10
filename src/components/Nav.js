@@ -40,4 +40,4 @@ const mapDispatchToProps = dispatch => ({
   removeAuthedUser: () => dispatch(logout())
 }) 
 
-export default connect(mapDispatchToProps)(Nav)
+export default connect(null, mapDispatchToProps)(Nav)
