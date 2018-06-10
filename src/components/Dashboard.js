@@ -63,7 +63,7 @@ class Dashboard extends Component {
                 {this.state.toggleQuestions==="unanswered" ? 
                     <Fragment>
                         <ul className='dashboard-list'>
-                            {this.state.userAnsweredQuestions.map((id) => (
+                            {this.state.userUnansweredQuestions.map((id) => (
                             <li key={id}>
                                 <PollItem id={id}/>
                             </li>
@@ -72,7 +72,7 @@ class Dashboard extends Component {
                     </Fragment>
                   : <Fragment>
                         <ul className='dashboard-list'>
-                            {this.state.userUnansweredQuestions.map((id) => (
+                            {this.state.userAnsweredQuestions.map((id) => (
                             <li key={id}>
                                 <PollItem id={id}/>
                             </li>
