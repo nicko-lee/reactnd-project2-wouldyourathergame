@@ -9,12 +9,12 @@ class Login extends Component {
       };
 
     state = {
-        selectedUser: null,
+        selectedUser: "",
         pleaseSelectUserMsg: false 
     }
 
     handleLogin = () => {
-        if (this.state.selectedUser !== null) {
+        if (this.state.selectedUser !== "") {
             this.props.history.push('/');
             this.props.setAuthedUser(this.state.selectedUser);
         } else {
@@ -35,12 +35,12 @@ class Login extends Component {
                     Login
                 </button>
                 <select value={this.state.selectedUser} onChange={this.handleSelection}>
-                    <option disabled selected>Select User...</option>
+                    <option value="" disabled>Select User...</option> 
                     <option value="aragorn">Aragorn Son of Arathorn</option>
                     <option value="gandalf">Gandalf the White</option>
                     <option value="legolas">Legolas</option>
                 </select>
-                {this.state.pleaseSelectUserMsg && this.state.selectedUser ===null && <p>Please select a user</p> }
+                {this.state.pleaseSelectUserMsg && this.state.selectedUser ==="" && <p>Please select a user</p> }
             </div>
             )
 

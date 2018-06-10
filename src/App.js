@@ -29,7 +29,7 @@ class App extends Component {
   
   PrivateRoute = () => (
     <Fragment>
-      { this.props.authedUser === null ? <Redirect to='/login' /> : (
+      { this.props.authedUser === "" ? <Redirect to='/login' /> : (
         <Fragment>
           <Avatar />
           <Header />
