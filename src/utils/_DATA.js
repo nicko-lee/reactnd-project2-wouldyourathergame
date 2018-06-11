@@ -23,7 +23,7 @@ let users = {
     },
     legolas: {
       id: 'legolas',
-      name: 'Legolas',
+      name: 'Legolas Prince of Mirkwood',
       avatarURL: 'https://vignette.wikia.nocookie.net/thehobbitfilm/images/7/77/Legolas.png/revision/latest?cb=20160606192421',
       answers: {
         "xj352vofupe1dqz9emx13r": 'optionOne',
