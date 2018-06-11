@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 
 class Leaderboard extends Component {
     static propTypes = {
-        users: PropTypes.object.isRequired,
+        users: PropTypes.array.isRequired,
     };
 
     render() {

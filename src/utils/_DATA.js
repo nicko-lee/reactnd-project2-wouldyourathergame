@@ -9,7 +9,7 @@ let users = {
         "am8ehyc8byjqgar0jgpub9": 'optionTwo',
         "loxhs1bqm25b708cmbf3g": 'optionTwo'
       },
-      questions: ['8xf0y6ziyjabvozdd253nd', 'am8ehyc8byjqgar0jgpub9']
+      questions: ['8xf0y6ziyjabvozdd253nd', 'am8ehyc8byjqgar0jgpub9', 'pufhucdz7fbr3rr2os7vib']
     },
     gandalf: {
       id: 'gandalf',
@@ -28,7 +28,8 @@ let users = {
       answers: {
         "xj352vofupe1dqz9emx13r": 'optionOne',
         "vthrdm985a262al8qx3do": 'optionTwo',
-        "6ni6ok3ym7mf1p33lnez": 'optionOne'
+        "6ni6ok3ym7mf1p33lnez": 'optionOne',
+        "pufhucdz7fbr3rr2os7vib": 'optionTwo'
       },
       questions: ['6ni6ok3ym7mf1p33lnez', 'xj352vofupe1dqz9emx13r'],
     }
@@ -111,6 +112,19 @@ let users = {
       optionTwo: {
         votes: ['gandalf'],
         text: 'write Swift'
+      }
+    },
+    "pufhucdz7fbr3rr2os7vib": {
+      id: 'pufhucdz7fbr3rr2os7vib',
+      author: 'aragorn',
+      timestamp: 1528700878153,
+      optionOne: {
+        votes: [],
+        text: 'be rich',
+      },
+      optionTwo: {
+        votes: ['legolas'],
+        text: 'be handsome or pretty'
       }
     },
   }
