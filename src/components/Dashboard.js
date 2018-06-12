@@ -65,7 +65,7 @@ class Dashboard extends Component {
                         <ul className='dashboard-list'>
                             {this.state.userUnansweredQuestions.map((id) => (
                             <li key={id}>
-                                <PollItem id={id}/>
+                                <PollItem id={id} />
                             </li>
                             ))}
                         </ul>
@@ -74,7 +74,7 @@ class Dashboard extends Component {
                         <ul className='dashboard-list'>
                             {this.state.userAnsweredQuestions.map((id) => (
                             <li key={id}>
-                                <PollItem id={id}/>
+                                <PollItem id={id} />
                             </li>
                             ))}
                         </ul>

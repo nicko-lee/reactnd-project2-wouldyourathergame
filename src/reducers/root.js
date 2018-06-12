@@ -68,8 +68,8 @@ export const questionsReducer = (state = {}, { type, value }) => {
                         ...state[value.qid],
                             [value.answer]: {
                                 ...state[value.qid][value.answer],
-                                'votes': [
-                                    ...state[value.qid][value.answer],
+                                votes: [
+                                    ...state[value.qid][value.answer].votes,
                                     value.authedUser
                                 ]
                             }

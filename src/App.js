@@ -9,6 +9,7 @@ import AddPoll from './components/AddPoll';
 import Leaderboard from './components/Leaderboard';
 import Login from './components/Login';
 import Avatar from './components/Avatar';
+import Notfound from './components/Notfound';
 import LoadingBar from 'react-redux-loading-bar'
 import { connect } from 'react-redux';
 import { _getUsers, _getQuestions } from './utils/_DATA';
@@ -52,8 +53,9 @@ class App extends Component {
     return (
      <BrowserRouter> 
         <Switch>
-          <Route path='/login' component={Login} />}
-          <Route path='/' component={this.PrivateRoute} />}          
+          <Route path='/login' component={Login} />
+          <Route path='/' component={this.PrivateRoute} />
+          <Route component={Notfound} />          
         </Switch>
      </BrowserRouter> 
     );
