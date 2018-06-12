@@ -7,6 +7,7 @@ import {
     ADD_QUESTION_TO_USER
 } from '../actions/root';
 import { combineReducers } from 'redux';
+import { loadingBarReducer } from 'react-redux-loading-bar';
 
 // REDUCERS
 
@@ -56,6 +57,7 @@ export const questionsReducer = (state = {}, { type, value }) => {
 // ALL COMES TOGETHER HERE - THIS IS YOUR "STORE"
 export default combineReducers({
     authedUser: authReducer,
+    loadingBar: loadingBarReducer,
     users: usersReducer,
     questions: questionsReducer
 });

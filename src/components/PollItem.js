@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types'
+import { NavLink } from 'react-router-dom'
 
 class PollItem extends Component {
     static propTypes = {
@@ -10,20 +11,22 @@ class PollItem extends Component {
 
     render() {
         return (
-            <div className="poll-item">
-                <h2>Would You Rather...</h2>
-                <ul>
-                    <li>
-                        {this.props.question.optionOne.text}
-                    </li>
-                    <li>
-                        {this.props.question.optionTwo.text}
-                    </li>       
+            <NavLink to={`/questions/${this.props.question.id}`}>
 
-                </ul>    
-            </div>
+                <div className="poll-item">
+                    <h2>Would You Rather...</h2>
+                    <ul>
+                        <li>
+                            {this.props.question.optionOne.text}
+                        </li>
+                        <li>
+                            {this.props.question.optionTwo.text}
+                        </li>       
+
+                    </ul>    
+                </div>
+            </NavLink>
         );
-
     }
 }  
 
