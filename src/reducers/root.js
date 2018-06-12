@@ -4,7 +4,9 @@ import {
     GET_USERS,
     GET_QUESTIONS,
     ADD_QUESTION,
-    ADD_QUESTION_TO_USER
+    ADD_QUESTION_TO_USER,
+    ADD_ANSWER_TO_USER,
+    ADD_ANSWER_TO_QUESTION
 } from '../actions/root';
 import { combineReducers } from 'redux';
 import { loadingBarReducer } from 'react-redux-loading-bar';
@@ -37,6 +39,17 @@ export const usersReducer = (state = {}, { type, value }) => {
                         ]
                     }
                 }
+        case ADD_ANSWER_TO_USER:
+            return {
+                ...state,
+                [value.authedUser]: {
+                    ...state[value.authedUser],
+                        answers: {
+                            ...state[value.authedUser].answers,
+                            [value.qid]: value.answer 
+                    }
+                }
+            }
         default:   
             return state;
         }
@@ -48,6 +61,20 @@ export const questionsReducer = (state = {}, { type, value }) => {
             return value;
         case ADD_QUESTION:
             return { ...state, [value.id]: value };
+        case ADD_ANSWER_TO_QUESTION:
+            return {
+                ...state,
+                    [value.qid]: {
+                        ...state[value.qid],
+                            [value.answer]: {
+                                ...state[value.qid][value.answer],
+                                'votes': [
+                                    ...state[value.qid][value.answer],
+                                    value.authedUser
+                                ]
+                            }
+                    } 
+            };
         default:   
             return state;
     }

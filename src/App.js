@@ -26,7 +26,6 @@ class App extends Component {
   );
     _getQuestions()
     .then(res => {
-      console.log('getQuestionsResponse', res);
       this.props.saveQuestionsToStore(res);
     })
   }
@@ -35,7 +34,7 @@ class App extends Component {
     <Fragment>
       { this.props.authedUser === "" ? <Redirect to='/login' /> : (
         <Fragment>
-          <Avatar authedUser={this.props.authedUser}/>
+          <Avatar user={this.props.authedUser}/>
           <LoadingBar style={{backgroundColor: "green"}}/>
           <Header />
           <Nav />

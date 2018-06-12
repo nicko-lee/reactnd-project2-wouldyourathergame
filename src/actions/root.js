@@ -5,6 +5,8 @@ export const GET_USERS = "GET_USERS";
 export const GET_QUESTIONS = "GET_QUESTIONS";
 export const ADD_QUESTION = "ADD_QUESTION";
 export const ADD_QUESTION_TO_USER = "ADD_QUESTION_TO_USER";
+export const ADD_ANSWER_TO_USER = "ADD_ANSWER_TO_USER";
+export const ADD_ANSWER_TO_QUESTION = "ADD_ANSWER_TO_QUESTION";
 
 
 // ACTION CREATORS
@@ -41,4 +43,16 @@ export const addNewQuestionToStore = (question) => ({
 export const addNewQuestionIdToUser = (questionId, user) => ({
     type: ADD_QUESTION_TO_USER,
     value: { questionId, user }
+})
+
+// this action is for adding a user added answer to an already existing question
+export const addNewUserAnswerToStore = (answer) => ({
+    type: ADD_ANSWER_TO_USER,
+    value: answer
+})
+
+// this action is for adding a user added answer to an already existing question
+export const updateQuestionToBeAwareOfUserAnswer = (answer) => ({
+    type: ADD_ANSWER_TO_QUESTION,
+    value: answer
 })

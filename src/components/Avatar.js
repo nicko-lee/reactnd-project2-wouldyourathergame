@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 class Avatar extends Component {
     static propTypes = {
-        authedUser: PropTypes.string.isRequired,
+        user: PropTypes.string.isRequired,
         userInfo: PropTypes.object.isRequired
       };
 
@@ -16,7 +16,7 @@ class Avatar extends Component {
                     alt={`Avatar of ${this.props.userInfo.name}`}
                     className='avatar'
                 />
-                <h1>Hi I am {this.props.authedUser}</h1>
+                <h1>Hi I am {this.props.userInfo.name}</h1>
             </div>
         );
     }
@@ -24,7 +24,7 @@ class Avatar extends Component {
 
 function mapStateToProps (state, ownProps) {
     return {
-      userInfo: state.users[ownProps.authedUser]
+      userInfo: state.users[ownProps.user]
     }
   }
 
