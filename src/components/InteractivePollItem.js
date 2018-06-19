@@ -72,6 +72,10 @@ class InteractivePollItem extends Component {
 
     }
 
+    cardStyle = {
+        width: '20rem'
+    }
+
     render() {
         return (
             <div className="poll-item">
@@ -91,19 +95,38 @@ class InteractivePollItem extends Component {
                 </Fragment>
                 : 
                 <Fragment>
-                    <Avatar user={this.props.question.author}/>
-                    <p>{this.formatDate()}</p>
-                    <h2>Would You Rather...</h2>
-                    <input type="radio" id="optionOne" name="option" value="optionOne" onChange={this.setSelectedOption}/>
-                    <label>{this.props.question.optionOne.text}</label>
+           
+                    <div className="card" style={this.cardStyle}>
+                        <div className="card-body">
+                            <h5 className="text-muted">Question asked by...</h5>
+                            <Avatar user={this.props.question.author}/>
+                            <p>{this.formatDate()}</p>
+                            <h5 className="card-title">Would you rather...</h5>
+                            <div className="card-text">
+                                <div className="input-group">
+                                    <div className="input-group-prepend">
+                                        <div className="input-group-text">
+                                            <input type="radio" id="optionOne" name="option" value="optionOne" onChange={this.setSelectedOption}/>
+                                            <label>{this.props.question.optionOne.text}</label><br/>
+                                        </div>
+                                    </div>
+                                </div>
 
-                    <input type="radio" id="optionTwo" name="option" value="optionTwo" onChange={this.setSelectedOption}/>
-                    <label>{this.props.question.optionTwo.text}</label>
+                                <div className="input-group">
+                                    <div className="input-group-prepend">
+                                        <div className="input-group-text">
+                                            <input type="radio" id="optionTwo" name="option" value="optionTwo" onChange={this.setSelectedOption}/>
+                                            {this.props.question.optionTwo.text}<br/>
+                                        </div>
+                                    </div>
+                                </div>
 
-                    <button type="button" onClick={this.handleSubmitVote}> 
-                        Submit Vote
-                    </button>
-
+                                <button type="button" className="btn btn-primary btn-sm" onClick={this.handleSubmitVote}> 
+                                    Submit Vote
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </Fragment>
 
                 }

@@ -2,13 +2,11 @@ import React, { Component, Fragment } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
-import Header from './components/Header';
 import Nav from './components/Nav';
 import Dashboard from './components/Dashboard';
 import AddPoll from './components/AddPoll';
 import Leaderboard from './components/Leaderboard';
 import Login from './components/Login';
-import Avatar from './components/Avatar';
 import Notfound from './components/Notfound';
 import LoadingBar from 'react-redux-loading-bar'
 import { connect } from 'react-redux';
@@ -32,20 +30,18 @@ class App extends Component {
   }
   
   PrivateRoute = () => (
-    <Fragment>
+    <div className='container-fluid'>
       { this.props.authedUser === "" ? <Redirect to='/login' /> : (
         <Fragment>
-          <Avatar user={this.props.authedUser}/>
-          <LoadingBar style={{backgroundColor: "green"}}/>
-          <Header />
           <Nav />
+          <LoadingBar style={{backgroundColor: "blue"}}/>
           <Route path='/' exact component={Dashboard} />
           <Route path='/new' component={AddPoll} />
           <Route path='/questions/:id' component={InteractivePollItem} />
           <Route path='/leaderboard' component={Leaderboard} />
         </Fragment>
         )}
-      </Fragment>
+      </div>
   )
 
   

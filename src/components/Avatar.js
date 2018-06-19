@@ -8,16 +8,29 @@ class Avatar extends Component {
         userInfo: PropTypes.object.isRequired
       };
 
+    // style stuff
+
+    avatarContainer = {
+        display: 'flex',
+        flexDirection: 'row'
+    }
+
+    textStyle = {
+        padding: '15px'
+    }
+
     render() {
         return (
-            <div className="avatar">
-                <img
-                    src={this.props.userInfo.avatarURL}
-                    alt={`Avatar of ${this.props.userInfo.name}`}
-                    className='avatar'
-                />
-                <h1>Hi I am {this.props.userInfo.name}</h1>
-            </div>
+                <div style={this.avatarContainer}> 
+                        <img className="avatar"
+                            src={this.props.userInfo.avatarURL}
+                            alt={`Avatar of ${this.props.userInfo.name}`}
+                        />
+                        <h6 style={this.textStyle}className="text-muted">{this.props.userInfo.name}</h6>
+          
+                </div>
+
+            
         );
     }
 };

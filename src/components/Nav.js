@@ -1,43 +1,72 @@
-
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux';
 import { logout } from '../actions/root';
+import PropTypes from 'prop-types'
+import Avatar from '../components/Avatar';
+
 
 class Nav extends Component {
+    static propTypes = {
+        removeAuthedUser: PropTypes.func.isRequired
+    };
 
-  render() {
-    return (
-      <nav className='nav'>
-        <ul>
-          <li>
-            <NavLink to='/' exact activeClassName='active'>
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to='/new' activeClassName='active'>
-              New Poll
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to='/leaderboard' activeClassName='active'>
-              Leaderboard
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to='/login' activeClassName='active' onClick={this.props.removeAuthedUser}>
-              Logout
-            </NavLink>
-          </li>
-        </ul>
-      </nav>
+    // style stuff
+    headerStyle = {
+        fontWeight: '500',
+        paddingTop: '13px'
+    }
+
+    innerContainerStyle = { // for using flex
+        justifyContent: 'space-between'
+    }
+
+    render() {
+        return (
+                <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                    <h3 className="navbar-brand" style={this.headerStyle}>Would You Rather Game</h3>
+                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
+                    </button>
+                    <div className="collapse navbar-collapse" style={this.innerContainerStyle} id="navbarText">
+                        <ul className="navbar-nav mr-auto">
+                        <li className="nav-item active">
+                            <NavLink className="nav-link" to='/' exact activeClassName='active'>
+                            Home/Dashboard
+                            </NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink className="nav-link" to='/new' activeClassName='active'>
+                            New Poll
+                            </NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink className="nav-link" to='/leaderboard' activeClassName='active'>
+                            Leaderboard
+                            </NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink className="nav-link" to='/login' activeClassName='active' onClick={this.props.removeAuthedUser}>
+                            Logout
+                            </NavLink>
+                        </li>
+                        </ul>
+                    <span><Avatar user={this.props.authedUser}/></span>
+                    </div>
+                </nav>
+
     )
-  }
+}
 }
 
-const mapDispatchToProps = dispatch => ({
-  removeAuthedUser: () => dispatch(logout())
-}) 
+function mapStateToProps (state) {
+    return {
+      authedUser: state.authedUser
+    }
+  }
 
-export default connect(null, mapDispatchToProps)(Nav)
+const mapDispatchToProps = dispatch => ({
+    removeAuthedUser: () => dispatch(logout())
+  }) 
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(Nav)

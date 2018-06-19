@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import PollItem from './PollItem';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types'
@@ -23,7 +23,7 @@ class Dashboard extends Component {
     
     sortUserQuestions = () => {
         let userAnsweredQuestions = this.props.users[this.props.authedUser].answers;
-        let userAnsweredQuestionsArray = Object.keys(userAnsweredQuestions); // this gives us an array of the queestion ids
+        let userAnsweredQuestionsArray = Object.keys(userAnsweredQuestions); // this gives us an array of the question ids
         this.setState({ userAnsweredQuestions: userAnsweredQuestionsArray });
 
         let userUnansweredQuestions = this.array_diff(userAnsweredQuestionsArray, this.props.questionIds);
@@ -48,37 +48,76 @@ class Dashboard extends Component {
         return diff;
     }
 
+    // style stuff
+
+    listStyle = {
+        listStyleType: 'none',
+        flexDirection: 'row',
+        display: 'flex',
+        justifyContent: 'center',
+        margin: '0em'
+
+    }
+
+    headerStyle = {
+        paddingTop: '15px',
+        paddingBottom: '10px',
+        textAlign: 'center'
+    }
+
+    buttonStyle = {
+        display: 'block',
+        width: '220px',
+        margin: '5px'
+    }
+
+    buttonContainer = {
+        flexDirection: 'row',
+        display: 'flex',
+        paddingBottom: '25px',
+        justifyContent: 'center'
+    }
+
+    questionsContainer = {
+        display: 'flex',
+        flexDirection: 'row'
+    }
+
+
     render() {
         return (
-            <div className="dashboard">
-                <h1>Hi I am the Dashboard</h1>
-                <div className="toggle-questions">
-                    <button type='button' onClick={() => this.setState({toggleQuestions: "unanswered"})}>
-                        UNANSWERED QUESTIONS
-                    </button>
-                    <button type='button' onClick={() => this.setState({toggleQuestions: "answered"})}>
-                        ANSWERED QUESTIONS
-                    </button>
+            <div className="container-fluid">
+                <div className='toggle-questions-container'>
+                    <h2 style={this.headerStyle}>Home/Dashboard</h2>
+                    <div style={this.buttonContainer}>
+                        <button type='button' style={this.buttonStyle} className="btn btn-primary btn-sm" onClick={() => this.setState({toggleQuestions: "unanswered"})}>
+                            UNANSWERED QUESTIONS
+                        </button>
+
+                        <button type='button' style={this.buttonStyle} className="btn btn-primary btn-sm" onClick={() => this.setState({toggleQuestions: "answered"})}>
+                            ANSWERED QUESTIONS
+                        </button>
+                    </div>
                 </div>    
                 {this.state.toggleQuestions==="unanswered" ? 
-                    <Fragment>
-                        <ul className='dashboard-list'>
+                    <div style={this.questionsContainer}>
+                        <ul style={this.listStyle} className='dashboard-list'>
                             {this.state.userUnansweredQuestions.map((id) => (
                             <li key={id}>
                                 <PollItem id={id} />
                             </li>
                             ))}
                         </ul>
-                    </Fragment>
-                  : <Fragment>
-                        <ul className='dashboard-list'>
+                    </div>
+                  : <div style={this.questionsContainer}>
+                        <ul style={this.listStyle} className='dashboard-list'>
                             {this.state.userAnsweredQuestions.map((id) => (
                             <li key={id}>
                                 <PollItem id={id} />
                             </li>
                             ))}
                         </ul>
-                    </Fragment>
+                    </div>
                 }
             </div>
             )

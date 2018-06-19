@@ -26,21 +26,33 @@ class Login extends Component {
         this.setState({ selectedUser: e.target.value })
     }
 
+    // style stuff
+
+    buttonStyle = {
+        margin: 'auto',
+        display: 'block'
+    }
+
+    textStyle = {
+        textAlign: 'center'
+    }
+
     render() {
         return (
-            <div className="login">
-                <h1>Hi I am the Login</h1>
-                
-                <button type='button' onClick={this.handleLogin}>
-                    Login
-                </button>
-                <select value={this.state.selectedUser} onChange={this.handleSelection}>
+            <div className='container'>
+            <div className="form-group">
+                <h2 style={this.textStyle} >Please login</h2>
+                <select className="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" value={this.state.selectedUser} onChange={this.handleSelection}>
                     <option value="" disabled>Select User...</option> 
                     <option value="aragorn">Aragorn Son of Arathorn</option>
                     <option value="gandalf">Gandalf the White</option>
-                    <option value="legolas">Legolas</option>
+                    <option value="legolas">Legolas Prince of Mirkwood</option>
                 </select>
+                <button style={this.buttonStyle} type='button' className="btn btn-primary btn-lg" onClick={this.handleLogin}>
+                    Login
+                </button>
                 {this.state.pleaseSelectUserMsg && this.state.selectedUser ==="" && <p>Please select a user</p> }
+            </div>
             </div>
             )
 

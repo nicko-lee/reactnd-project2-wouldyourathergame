@@ -49,11 +49,22 @@ class AddPoll extends Component {
 
 }
 
+    // style stuff
+
+    textContainer = {
+        textAlign: 'center',
+        paddingBottom: '15px',
+        paddingTop: '15px'
+    }
+
+
     render() {
         return (
             <div className="poll-item">
-                <h1>Hi I am the AddPoll</h1>
-                <h2>Would you rather...</h2>
+                <div style={this.textContainer}>
+                    <h2>Add New Poll</h2>
+                    <h5 className="text-muted">Would you rather...</h5>
+                </div>
                 <form>
                     Option One: <br />
                     <input 
@@ -70,7 +81,7 @@ class AddPoll extends Component {
                         onChange={ (event) => this.setState({ optionTwo: event.target.value })}  
                     />
                     <p>
-                        <button type="button" onClick={this.handlePost}> 
+                        <button type="button" className="btn btn-primary btn-sm" onClick={this.handlePost}> 
                             Post New Question
                         </button>
                     </p>

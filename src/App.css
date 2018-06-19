@@ -1,0 +1,10 @@
+.avatar {
+    vertical-align: middle;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+}
+
+.navbar-collapse.collapse.in {
+    display: inline-block; 
+}
