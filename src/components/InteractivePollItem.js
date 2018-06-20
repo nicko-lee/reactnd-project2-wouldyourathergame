@@ -72,60 +72,141 @@ class InteractivePollItem extends Component {
 
     }
 
-    cardStyle = {
-        width: '20rem'
+    // style stuff
+
+    cardOuterContainer = {
+        // padding: '10px'
+        display: 'flex',
+        justifyContent: 'center',
+        marginTop: '20px'
     }
+
+    cardInnerContainer = {
+        backgroundColor: '#f8f9fa',
+        display: 'flex',
+        flexDirection: 'column',
+        paddingLeft: '5em',
+        paddingRight: '5em',
+        width: '450px'
+    }
+
+    buttonContainer = {
+        display: 'flex',
+        justifyContent: 'flex-end',
+        marginTop: '20px'
+
+    }
+
+    headerStyle = {
+        textAlign: 'center',
+        paddingTop: '25px'
+    }
+
+    subHeaderStyle = {
+        textAlign: 'center',
+        paddingTop: '7px'
+    }
+
+    timeContainer = {
+        paddingTop: '15px',
+        paddingBottom: '15px'
+    }
+
+    labelTextStyle = {
+        paddingLeft: '10px'
+    }
+
+    progressBar = (option) => {
+        const questionStats = this.calculateQuestionStats();
+
+        return {
+            height: '24px',
+            width: option === "optionOne" ? `${questionStats.optionOnePercentage}%` : `${questionStats.optionTwoPercentage}%`,
+            border: '1px solid rgba(0,0,0,.125)',
+            backgroundColor: '#007bff'
+        }
+    }
+
+    progressBarContainer = {
+        display: 'flex',
+        flexDirection: 'row',
+        width: '18.5em',
+        backgroundColor: '#afcbef'
+    }
+
+    progressBarLabel = {
+        marginBottom: '5px',
+        marginTop: '10px',
+        fontWeight: 'bolder'
+    }
+
 
     render() {
         return (
             <div className="poll-item">
                 {this.props.userAnswer !== 'You haven\'t answered this yet'
                 ? 
-                <Fragment>              
-                    <Avatar user={this.props.question.author}/>
-                    <p>{this.formatDate()}</p>
-                    <h2>Would You Rather...</h2>
-                    <p>{this.props.question.optionOne.text}</p>
-                    <p>{this.calculateQuestionStats().optionOnePercentage + "%"}</p>
-                    <p>{this.calculateQuestionStats().optionOne + " votes cast"}</p>
-                    <p>{this.props.question.optionTwo.text}</p>
-                    <p>{this.calculateQuestionStats().optionTwoPercentage + "%"}</p>
-                    <p>{this.calculateQuestionStats().optionTwo + " votes cast"}</p>
-                    <p>{"You answered " + this.props.userAnswer}</p>
+                <Fragment>  
+                    <h2 style={this.headerStyle}>Question stats</h2>
+                    <h5 className="text-muted" style={this.subHeaderStyle}>Question asked by:</h5>
+                    <div style={this.cardOuterContainer}>
+                        <div className="card">
+                            <div className="card-body" style={this.cardInnerContainer}>
+                                <Avatar user={this.props.question.author}/>
+                                <p style={this.timeContainer}><b>Date</b>: {this.formatDate()}</p>
+                                <h2>Would You Rather...</h2>
+                                <p style={this.progressBarLabel}>{this.props.question.optionOne.text}</p>
+                                <div style={this.progressBarContainer}>
+                                    <div style={this.progressBar("optionOne")}></div>
+                                </div>
+                                <label>{this.calculateQuestionStats().optionOne + " votes cast"} | {this.calculateQuestionStats().optionOnePercentage + "%"}</label>
+                                
+                                <p style={this.progressBarLabel}>{this.props.question.optionTwo.text}</p>
+                                <div style={this.progressBarContainer}>
+                                    <div style={this.progressBar("optionTwo")}></div>
+                                </div>
+                                <p>{this.calculateQuestionStats().optionTwo + " votes cast"} | {this.calculateQuestionStats().optionTwoPercentage + "%"} </p>
+                                <p>{`You answered: "${this.props.question[this.props.userAnswer].text}"`}</p>
+                            </div>
+                        </div>
+                    </div>
                 </Fragment>
                 : 
                 <Fragment>
-           
-                    <div className="card" style={this.cardStyle}>
-                        <div className="card-body">
-                            <h5 className="text-muted">Question asked by...</h5>
+                    <h2 style={this.headerStyle}>Question asked by:</h2>
+                    <div style={this.cardOuterContainer}>
+                    <div className="card">
+                        <div className="card-body" style={this.cardInnerContainer}>
                             <Avatar user={this.props.question.author}/>
-                            <p>{this.formatDate()}</p>
-                            <h5 className="card-title">Would you rather...</h5>
+                            <p style={this.timeContainer}><b>Date</b>: {this.formatDate()}</p>
+                            <h4 className="card-title">Would you rather...</h4>
                             <div className="card-text">
+
                                 <div className="input-group">
                                     <div className="input-group-prepend">
-                                        <div className="input-group-text">
+                                        <div>
                                             <input type="radio" id="optionOne" name="option" value="optionOne" onChange={this.setSelectedOption}/>
-                                            <label>{this.props.question.optionOne.text}</label><br/>
+                                            <label style={this.labelTextStyle}>{this.props.question.optionOne.text}</label><br/>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div className="input-group">
                                     <div className="input-group-prepend">
-                                        <div className="input-group-text">
+                                        <div>
                                             <input type="radio" id="optionTwo" name="option" value="optionTwo" onChange={this.setSelectedOption}/>
-                                            {this.props.question.optionTwo.text}<br/>
+                                            <label style={this.labelTextStyle}>{this.props.question.optionTwo.text}</label><br/>
                                         </div>
                                     </div>
                                 </div>
-
-                                <button type="button" className="btn btn-primary btn-sm" onClick={this.handleSubmitVote}> 
-                                    Submit Vote
-                                </button>
+                            </div>
+                            <div style={this.buttonContainer}>
+                                    <button type="button" className="btn btn-primary btn-sm" onClick={this.handleSubmitVote}> 
+                                        Submit Vote
+                                    </button>
                             </div>
                         </div>
+                    </div>
                     </div>
                 </Fragment>
 

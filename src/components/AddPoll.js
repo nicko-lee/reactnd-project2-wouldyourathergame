@@ -57,6 +57,42 @@ class AddPoll extends Component {
         paddingTop: '15px'
     }
 
+    formContainer = {
+        display: 'flex',
+        flexDirection: 'column',
+        backgroundColor: '#f8f9fa',
+        width: '470px',
+        justifyContent: 'center',
+        padding: '30px',
+        // alignSelf: 'center',
+        border: '1px solid rgba(0,0,0,.125)'
+
+    }
+
+    outerFormContainer = {
+        display: 'flex',
+        justifyContent: 'center'
+    }
+
+    buttonContainer = {
+        alignSelf: 'center'
+    }
+
+    buttonStyle = {
+        marginTop: '25px'
+    }
+
+    inputStyle = {
+        marginTop: '0px'
+    }
+
+    labelContainer = {
+        textAlign: 'center',
+        fontWeight: 'bold'
+    }
+
+
+
 
     render() {
         return (
@@ -65,28 +101,32 @@ class AddPoll extends Component {
                     <h2>Add New Poll</h2>
                     <h5 className="text-muted">Would you rather...</h5>
                 </div>
-                <form>
-                    Option One: <br />
-                    <input 
-                        type="text" 
-                        placeholder="Enter first option..."
-                        value={this.state.optionOne}
-                        onChange={ (event) => this.setState({ optionOne: event.target.value })}  
-                    /> <br />
-                    Option Two: <br />
-                    <input 
-                        type="text" 
-                        placeholder="Enter second option..."
-                        value={this.state.optionTwo}
-                        onChange={ (event) => this.setState({ optionTwo: event.target.value })}  
-                    />
-                    <p>
-                        <button type="button" className="btn btn-primary btn-sm" onClick={this.handlePost}> 
-                            Post New Question
-                        </button>
-                    </p>
-                    {this.state.validationMsg ===true && <p>Please enter both options</p> }
-                </form>
+                    <div style={this.outerFormContainer}>
+                        <form style={this.formContainer}>
+                            <span style={this.labelContainer}>Option One:</span><br />
+                            <input 
+                                type="text" 
+                                placeholder="Enter first option..."
+                                value={this.state.optionOne}
+                                onChange={ (event) => this.setState({ optionOne: event.target.value })}
+                                style={this.inputStyle}   
+                            /> <br />
+                            <span style={this.labelContainer}>Option Two:</span><br />
+                            <input 
+                                type="text" 
+                                placeholder="Enter second option..."
+                                value={this.state.optionTwo}
+                                onChange={ (event) => this.setState({ optionTwo: event.target.value })} 
+                                style={this.inputStyle} 
+                            />
+                            <p style={this.buttonContainer}>
+                                <button style={this.buttonStyle} type="button" className="btn btn-primary btn-sm" onClick={this.handlePost}> 
+                                    Post New Question
+                                </button>
+                            </p>
+                            {this.state.validationMsg ===true && <p>Please enter both options</p> }
+                        </form>
+                    </div>
             </div>
         );
     }

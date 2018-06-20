@@ -29,30 +29,56 @@ class Login extends Component {
     // style stuff
 
     buttonStyle = {
-        margin: 'auto',
-        display: 'block'
+        margin: '20px',
+        width: '90px',
+        alignSelf: 'center'
     }
 
     textStyle = {
         textAlign: 'center'
     }
 
+    formContainer = {
+        display: 'flex',
+        width: '550px',
+        height: '280px',
+        backgroundColor: '#f8f9fa',
+        marginTop: '95px',
+        padding: '15px',
+        border: '1px solid rgba(0,0,0,.125)'
+        
+
+    }
+
+    innerFormContainer = {
+        display: 'flex',
+        flexDirection: 'column',
+        flex: 1,
+        // backgroundColor: 'powderblue',
+        textAlign: 'center',
+        justifyContent: 'space-evenly',
+        marginBottom: '0px',
+        paddingRight: '20px',
+        paddingLeft: '20px'
+
+    }
+
     render() {
         return (
-            <div className='container'>
-            <div className="form-group">
-                <h2 style={this.textStyle} >Please login</h2>
-                <select className="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" value={this.state.selectedUser} onChange={this.handleSelection}>
-                    <option value="" disabled>Select User...</option> 
-                    <option value="aragorn">Aragorn Son of Arathorn</option>
-                    <option value="gandalf">Gandalf the White</option>
-                    <option value="legolas">Legolas Prince of Mirkwood</option>
-                </select>
-                <button style={this.buttonStyle} type='button' className="btn btn-primary btn-lg" onClick={this.handleLogin}>
-                    Login
-                </button>
-                {this.state.pleaseSelectUserMsg && this.state.selectedUser ==="" && <p>Please select a user</p> }
-            </div>
+            <div className='container' style={this.formContainer}>
+                <div className="form-group" style={this.innerFormContainer}>
+                    <h2 style={this.textStyle} >Please login:</h2>
+                    <select className="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" value={this.state.selectedUser} onChange={this.handleSelection}>
+                        <option value="" disabled>Select User...</option> 
+                        <option value="aragorn">Aragorn Son of Arathorn</option>
+                        <option value="gandalf">Gandalf the White</option>
+                        <option value="legolas">Legolas Prince of Mirkwood</option>
+                    </select>
+                    <button style={this.buttonStyle} type='button' className="btn btn-primary btn-md" onClick={this.handleLogin}>
+                        Login
+                    </button>
+                    {this.state.pleaseSelectUserMsg && this.state.selectedUser ==="" && <p>Please select a user</p> }
+                </div>
             </div>
             )
 

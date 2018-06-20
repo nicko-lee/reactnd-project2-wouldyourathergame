@@ -54,8 +54,8 @@ class Dashboard extends Component {
         listStyleType: 'none',
         flexDirection: 'row',
         display: 'flex',
-        justifyContent: 'center',
-        margin: '0em'
+        flexWrap: 'wrap',
+        padding: '0px'
 
     }
 
@@ -79,14 +79,15 @@ class Dashboard extends Component {
     }
 
     questionsContainer = {
-        display: 'flex',
-        flexDirection: 'row'
+        // backgroundColor: 'powderblue',
+        paddingLeft: '45px'
     }
+
 
 
     render() {
         return (
-            <div className="container-fluid">
+            <div className="container">
                 <div className='toggle-questions-container'>
                     <h2 style={this.headerStyle}>Home/Dashboard</h2>
                     <div style={this.buttonContainer}>
@@ -99,26 +100,30 @@ class Dashboard extends Component {
                         </button>
                     </div>
                 </div>    
+
                 {this.state.toggleQuestions==="unanswered" ? 
-                    <div style={this.questionsContainer}>
-                        <ul style={this.listStyle} className='dashboard-list'>
-                            {this.state.userUnansweredQuestions.map((id) => (
-                            <li key={id}>
-                                <PollItem id={id} />
-                            </li>
-                            ))}
-                        </ul>
-                    </div>
-                  : <div style={this.questionsContainer}>
-                        <ul style={this.listStyle} className='dashboard-list'>
-                            {this.state.userAnsweredQuestions.map((id) => (
-                            <li key={id}>
-                                <PollItem id={id} />
-                            </li>
-                            ))}
-                        </ul>
-                    </div>
+
+                <div style={this.questionsContainer}>
+                    <ul style={this.listStyle} className='dashboard-list'>
+                        {this.state.userUnansweredQuestions.map((id) => (
+                        <li key={id}>
+                            <PollItem id={id} />
+                        </li>
+                        ))}
+                    </ul>
+                </div>
+            : <div style={this.questionsContainer}>
+                    <ul style={this.listStyle} className='dashboard-list'>
+                        {this.state.userAnsweredQuestions.map((id) => (
+                        <li key={id}>
+                            <PollItem id={id} />
+                        </li>
+                        ))}
+                    </ul>
+              </div>
+
                 }
+
             </div>
             )
     }

@@ -15,7 +15,8 @@ cardStyle = {
     width: '20rem',
     padding: '10px 10px 5px 10px',
     margin: '10px',
-    backgroundColor: '#f8f9fa'
+    backgroundColor: '#f8f9fa',
+    minHeight: '15em'
 }
 
 listStyle = {
