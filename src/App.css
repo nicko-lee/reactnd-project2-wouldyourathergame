@@ -8,3 +8,35 @@
 .navbar-collapse.collapse.in {
     display: inline-block; 
 }
+
+.login-container {
+    padding: 2.5rem 3rem;
+    /* max-width: 35rem;  */
+}
+
+.login-form{
+    padding: 2.5rem 3rem;
+    max-width: 35rem; 
+}
+
+.card-body-front {
+    padding: 2.5rem 3rem;
+    max-width: 35rem; 
+}
+
+@media (min-width: 600px) {
+    .card-body-front {
+        padding: 1.25rem 5rem;
+    }
+  }
+
+.card-body-back {
+    padding: 2.5rem 2rem;
+    max-width: 35rem; 
+}
+
+@media (min-width: 600px) {
+    .card-body-back {
+        padding: 1.25rem 7rem;
+    }
+  }

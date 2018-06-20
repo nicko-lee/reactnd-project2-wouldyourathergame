@@ -21,9 +21,13 @@ class Nav extends Component {
         justifyContent: 'space-between'
     }
 
+    navContainer = {
+        justifyContent: 'center'
+    }
+
     render() {
         return (
-                <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                <nav style={this.navContainer} className="navbar navbar-expand-lg navbar-light bg-light">
                     <h3 className="navbar-brand" style={this.headerStyle}>The "Would You Rather" Challenge</h3>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>

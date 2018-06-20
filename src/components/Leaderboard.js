@@ -24,35 +24,37 @@ class Leaderboard extends Component {
                     <h2 style={this.textStyle}>Leaderboard</h2>
                     <h5 style={this.textStyle} className="text-muted">May the odds be ever in your favor...</h5>
                 </div>
-                <table className="table">
-                    <thead>
-                    <tr>
-                        <th>Rank</th>
-                        <th>Avatar</th>
-                        <th>Username</th>
-                        <th>Questions Asked</th>
-                        <th>Questions Answered</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        {this.props.users.map((user, index) => (
-                            <tr key={user.id}>
-                            <td>{index + 1}</td>
-                            <td>       
-                                <img
-                                    src={user.avatarURL}
-                                    alt={`Avatar of ${user.name}`}
-                                    className='avatar'
-                                />
-                            </td>
-                            <td>{user.name}</td>
-                            <td>{user.questions.length}</td>
-                            {/* it doesn't make a diff if you used Object.keys or .values below here */}
-                            <td>{Object.keys(user.answers).length}</td> 
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
+                <div className="table-responsive">
+                    <table className="table table-hover table-striped table-bordered">
+                        <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Avatar</th>
+                            <th>Username</th>
+                            <th>Questions Asked</th>
+                            <th>Questions Answered</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {this.props.users.map((user, index) => (
+                                <tr key={user.id}>
+                                <td>{index + 1}</td>
+                                <td>       
+                                    <img
+                                        src={user.avatarURL}
+                                        alt={`Avatar of ${user.name}`}
+                                        className='avatar'
+                                    />
+                                </td>
+                                <td>{user.name}</td>
+                                <td>{user.questions.length}</td>
+                                {/* it doesn't make a diff if you used Object.keys or .values below here */}
+                                <td>{Object.keys(user.answers).length}</td> 
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         );
     }

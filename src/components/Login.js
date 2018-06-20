@@ -40,33 +40,35 @@ class Login extends Component {
 
     formContainer = {
         display: 'flex',
-        width: '550px',
+        // width: '30em',
+        justifyContent: 'center',
         height: '280px',
-        backgroundColor: '#f8f9fa',
-        marginTop: '95px',
-        padding: '15px',
-        border: '1px solid rgba(0,0,0,.125)'
+        // maxWidth: '30em',
         
-
+        marginTop: '7em',
+        padding: '20px 20px',
     }
 
     innerFormContainer = {
         display: 'flex',
         flexDirection: 'column',
         flex: 1,
-        // backgroundColor: 'powderblue',
+        height: '20em',
         textAlign: 'center',
         justifyContent: 'space-evenly',
         marginBottom: '0px',
         paddingRight: '20px',
-        paddingLeft: '20px'
+        paddingLeft: '20px',
+        backgroundColor: '#f8f9fa',
+        border: '1px solid rgba(0,0,0,.125)'
+
 
     }
 
     render() {
         return (
-            <div className='container' style={this.formContainer}>
-                <div className="form-group" style={this.innerFormContainer}>
+            <div className='login-container' style={this.formContainer}>
+                <div className='login-form' style={this.innerFormContainer}>
                     <h2 style={this.textStyle} >Please login:</h2>
                     <select className="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" value={this.state.selectedUser} onChange={this.handleSelection}>
                         <option value="" disabled>Select User...</option> 

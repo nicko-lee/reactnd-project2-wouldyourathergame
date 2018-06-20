@@ -55,7 +55,8 @@ class Dashboard extends Component {
         flexDirection: 'row',
         display: 'flex',
         flexWrap: 'wrap',
-        padding: '0px'
+        padding: '0px',
+        justifyContent: 'center'
 
     }
 
@@ -75,19 +76,16 @@ class Dashboard extends Component {
         flexDirection: 'row',
         display: 'flex',
         paddingBottom: '25px',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        flexWrap: 'wrap'
     }
 
-    questionsContainer = {
-        // backgroundColor: 'powderblue',
-        paddingLeft: '45px'
-    }
 
 
 
     render() {
         return (
-            <div className="container">
+            <div className='container'>
                 <div className='toggle-questions-container'>
                     <h2 style={this.headerStyle}>Home/Dashboard</h2>
                     <div style={this.buttonContainer}>
@@ -103,7 +101,7 @@ class Dashboard extends Component {
 
                 {this.state.toggleQuestions==="unanswered" ? 
 
-                <div style={this.questionsContainer}>
+                <div>
                     <ul style={this.listStyle} className='dashboard-list'>
                         {this.state.userUnansweredQuestions.map((id) => (
                         <li key={id}>
@@ -112,7 +110,7 @@ class Dashboard extends Component {
                         ))}
                     </ul>
                 </div>
-            : <div style={this.questionsContainer}>
+            : <div>
                     <ul style={this.listStyle} className='dashboard-list'>
                         {this.state.userAnsweredQuestions.map((id) => (
                         <li key={id}>

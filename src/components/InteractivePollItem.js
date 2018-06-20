@@ -78,16 +78,17 @@ class InteractivePollItem extends Component {
         // padding: '10px'
         display: 'flex',
         justifyContent: 'center',
-        marginTop: '20px'
+        marginTop: '20px',
+        marginBottom: '25px'
     }
 
     cardInnerContainer = {
         backgroundColor: '#f8f9fa',
         display: 'flex',
         flexDirection: 'column',
-        paddingLeft: '5em',
-        paddingRight: '5em',
-        width: '450px'
+        // width: '100% !important'
+        padding: '2.5rem 5rem !important' 
+
     }
 
     buttonContainer = {
@@ -109,7 +110,7 @@ class InteractivePollItem extends Component {
 
     timeContainer = {
         paddingTop: '15px',
-        paddingBottom: '15px'
+        paddingBottom: '5px'
     }
 
     labelTextStyle = {
@@ -130,7 +131,7 @@ class InteractivePollItem extends Component {
     progressBarContainer = {
         display: 'flex',
         flexDirection: 'row',
-        width: '18.5em',
+        width: '100%',
         backgroundColor: '#afcbef'
     }
 
@@ -151,7 +152,7 @@ class InteractivePollItem extends Component {
                     <h5 className="text-muted" style={this.subHeaderStyle}>Question asked by:</h5>
                     <div style={this.cardOuterContainer}>
                         <div className="card">
-                            <div className="card-body" style={this.cardInnerContainer}>
+                            <div style={this.cardInnerContainer} className="card-body-back">
                                 <Avatar user={this.props.question.author}/>
                                 <p style={this.timeContainer}><b>Date</b>: {this.formatDate()}</p>
                                 <h2>Would You Rather...</h2>
@@ -176,7 +177,7 @@ class InteractivePollItem extends Component {
                     <h2 style={this.headerStyle}>Question asked by:</h2>
                     <div style={this.cardOuterContainer}>
                     <div className="card">
-                        <div className="card-body" style={this.cardInnerContainer}>
+                        <div className="card-body-front" style={this.cardInnerContainer}>
                             <Avatar user={this.props.question.author}/>
                             <p style={this.timeContainer}><b>Date</b>: {this.formatDate()}</p>
                             <h4 className="card-title">Would you rather...</h4>
