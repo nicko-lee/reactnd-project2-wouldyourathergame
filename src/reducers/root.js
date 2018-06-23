@@ -6,7 +6,9 @@ import {
     ADD_QUESTION,
     ADD_QUESTION_TO_USER,
     ADD_ANSWER_TO_USER,
-    ADD_ANSWER_TO_QUESTION
+    ADD_ANSWER_TO_QUESTION,
+    SET_REDIRECT_URL,
+    CLEAR_REDIRECT_URL
 } from '../actions/root';
 import { combineReducers } from 'redux';
 import { loadingBarReducer } from 'react-redux-loading-bar';
@@ -18,6 +20,17 @@ export const authReducer = (state = "", { type, value }) => {
         case LOGIN:
             return value;
         case LOGOUT:
+            return value;
+        default:   
+            return state;
+    }
+};
+
+export const redirectReducer = (state = "", { type, value }) => {
+    switch(type) {
+        case SET_REDIRECT_URL:
+            return value;
+        case CLEAR_REDIRECT_URL:
             return value;
         default:   
             return state;
@@ -84,6 +97,7 @@ export const questionsReducer = (state = {}, { type, value }) => {
 // ALL COMES TOGETHER HERE - THIS IS YOUR "STORE"
 export default combineReducers({
     authedUser: authReducer,
+    redirectUrl: redirectReducer,
     loadingBar: loadingBarReducer,
     users: usersReducer,
     questions: questionsReducer

@@ -15,11 +15,16 @@ class InteractivePollItem extends Component {
     };
 
     state = {
-        selectedOption: ""
+        selectedOption: "",
+        pleaseSelectOptionMsg: false 
+
     }
 
     setSelectedOption = (e) => {
-        this.setState({ selectedOption: e.target.value});
+        this.setState({ 
+            selectedOption: e.target.value,
+            pleaseSelectOptionMsg: false
+        });
     }
 
     formatDate = () => {
@@ -29,30 +34,38 @@ class InteractivePollItem extends Component {
     }
 
     handleSubmitVote = () => {
-        // fire off showLoading for loading bar
-        this.props.showLoading(); 
+        if (this.state.selectedOption !== "") {
+            // toggle validation message off
+            this.setState({ pleaseSelectOptionMsg: false });
+            
+            // fire off showLoading for loading bar
+            this.props.showLoading(); 
 
-        // prepare an object to pass into Redux and mock DB
-        const questionAnswer = {     
-            authedUser: this.props.authedUser,
-            qid: this.props.question.id,
-            answer: this.state.selectedOption
-        }
+            // prepare an object to pass into Redux and mock DB
+            const questionAnswer = {     
+                authedUser: this.props.authedUser,
+                qid: this.props.question.id,
+                answer: this.state.selectedOption
+            }
         
-        // updating mock DB so backend is in sync with front end
-        _saveQuestionAnswer(questionAnswer)
-        .then(res => {
+            // updating mock DB so backend is in sync with front end
+            _saveQuestionAnswer(questionAnswer)
+            .then(res => {
 
-            // updating users slice of state in Redux
-            this.props.addNewUserAnswerToStore(questionAnswer);
+                // updating users slice of state in Redux
+                this.props.addNewUserAnswerToStore(questionAnswer);
 
-            // updating questions slice of state in Redux
-            this.props.updateQuestionToBeAwareOfUserAnswer(questionAnswer);
+                // updating questions slice of state in Redux
+                this.props.updateQuestionToBeAwareOfUserAnswer(questionAnswer);
 
-            this.props.history.push('/'); // switch pages
-            this.props.hideLoading(); // then when it comes back u shut it down
-             }
-        );
+                this.props.history.push(`/questions/${this.props.question.id}`); // switch view to Answered View
+                this.props.hideLoading(); // then when it comes back u shut it down
+                }
+            );
+        } else {
+                // some validation warning message to make sure an option is selected
+                this.setState({ pleaseSelectOptionMsg: true });
+        }
     }
 
     calculateQuestionStats = () => {
@@ -206,6 +219,7 @@ class InteractivePollItem extends Component {
                                         Submit Vote
                                     </button>
                             </div>
+                            {this.state.pleaseSelectOptionMsg ===true && <p>Please select an option</p> }
                         </div>
                     </div>
                     </div>

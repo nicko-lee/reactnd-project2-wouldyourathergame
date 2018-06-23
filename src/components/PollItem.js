@@ -38,7 +38,7 @@ listStyle = {
                                 {this.props.question.optionTwo.text}
                             </li>       
                         </ul>  
-                    <NavLink to={`/questions/${this.props.question.id}`}> Click here to vote... </NavLink>
+                    <NavLink to={`/questions/${this.props.question.id}`}> Click here to expand card... </NavLink>
                 </div>
             </div>
             

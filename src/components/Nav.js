@@ -54,6 +54,11 @@ class Nav extends Component {
                             Logout
                             </NavLink>
                         </li>
+                        <li className="nav-item">
+                            <NavLink className="nav-link" to='/dud' activeClassName='active'>
+                            Notfound
+                            </NavLink>
+                        </li>
                         </ul>
                     <span><Avatar user={this.props.authedUser}/></span>
                     </div>

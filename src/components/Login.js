@@ -13,10 +13,17 @@ class Login extends Component {
         pleaseSelectUserMsg: false 
     }
 
+    // optional to mimic Facebook's behavior
+    // componentDidMount = () => {
+    //     if (this.state.selectedUser !== "") {
+    //     this.props.history.push('/');
+    //     }
+    // }
+
     handleLogin = () => {
         if (this.state.selectedUser !== "") {
-            this.props.history.push('/');
             this.props.setAuthedUser(this.state.selectedUser);
+            this.props.history.push('/');
         } else {
             this.setState({ pleaseSelectUserMsg: true })
         }
