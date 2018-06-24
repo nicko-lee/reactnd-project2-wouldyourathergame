@@ -7,10 +7,10 @@ import InteractivePollItem from './InteractivePollItem';
 import Leaderboard from './Leaderboard';
 import Notfound from './Notfound';
 import Nav from './Nav';
-import { LoadingBar } from 'react-redux-loading-bar';
+import LoadingBar from 'react-redux-loading-bar';
 import Route from 'react-router-dom/Route';
 import PropTypes from 'prop-types'
-
+import Switch from 'react-router-dom/Switch';
 
 class PrivateRoute extends Component {
     static propTypes = {
@@ -22,15 +22,10 @@ class PrivateRoute extends Component {
     };
 
     componentDidMount = () => {
+
         if(this.props.authedUser === ""){
             this.props.setRedirectUrl(this.props.currentUrl);
             this.props.history.push('/login'); // switch pages
-        }
-
-        if(this.props.authedUser !== "" && this.props.redirectUrl !== ""){
-            this.props.history.push(`${this.props.redirectUrl}`);
-            this.props.clearRedirectUrl();
-
         }
     }
 
@@ -41,11 +36,13 @@ class PrivateRoute extends Component {
                 <Fragment>
                 <Nav />
                 <LoadingBar style={{backgroundColor: "blue"}}/>
-                <Route path='/' exact component={Dashboard} />
-                <Route path='/new' component={AddPoll} />
-                <Route path='/questions/:id' component={InteractivePollItem} />
-                <Route path='/leaderboard' component={Leaderboard} />
-                <Route path='/dud' component={Notfound} />
+                <Switch>
+                    <Route path='/' exact component={Dashboard} />
+                    <Route path='/new' component={AddPoll} />
+                    <Route path='/questions/:id' component={InteractivePollItem} />
+                    <Route path='/leaderboard' component={Leaderboard} />
+                    <Route component={Notfound} />
+                </Switch>
                 </Fragment>)}
             </div>
         )

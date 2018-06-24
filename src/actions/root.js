@@ -69,5 +69,5 @@ export const setRedirectUrl = (url) => ({
 // this action is for clearing the url after the user has signed in so that the next user will start at the home page "/"
 export const clearRedirectUrl = () => ({
     type: CLEAR_REDIRECT_URL,
-    value: ''
+    value: ""
 })

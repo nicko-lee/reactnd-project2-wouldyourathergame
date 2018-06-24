@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
-import { login } from '../actions/root';
+import { login, clearRedirectUrl } from '../actions/root';
 
 class Login extends Component {
     static propTypes = {
         users: PropTypes.object.isRequired,
+        redirectUrl: PropTypes.string.isRequired,
+        setAuthedUser: PropTypes.func.isRequired,
+        clearRedirectUrl: PropTypes.func.isRequired
       };
 
     state = {
@@ -23,7 +26,9 @@ class Login extends Component {
     handleLogin = () => {
         if (this.state.selectedUser !== "") {
             this.props.setAuthedUser(this.state.selectedUser);
-            this.props.history.push('/');
+            // added this if statement because the UI was very buggy each time a user's entry point was /login
+            this.props.redirectUrl === '/login' ? this.props.history.push('/') : this.props.history.push(`${this.props.redirectUrl}`);
+            this.props.clearRedirectUrl();
         } else {
             this.setState({ pleaseSelectUserMsg: true })
         }
@@ -47,11 +52,8 @@ class Login extends Component {
 
     formContainer = {
         display: 'flex',
-        // width: '30em',
         justifyContent: 'center',
         height: '280px',
-        // maxWidth: '30em',
-        
         marginTop: '7em',
         padding: '20px 20px',
     }
@@ -68,8 +70,6 @@ class Login extends Component {
         paddingLeft: '20px',
         backgroundColor: '#f8f9fa',
         border: '1px solid rgba(0,0,0,.125)'
-
-
     }
 
     render() {
@@ -96,12 +96,14 @@ class Login extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    users: state.users
+    users: state.users,
+    redirectUrl: state.redirectUrl
 })
 
 // this guy updates the store
 const mapDispatchToProps = dispatch => ({
-    setAuthedUser: (selectedUser) => dispatch(login(selectedUser)) 
+    setAuthedUser: (selectedUser) => dispatch(login(selectedUser)),
+    clearRedirectUrl: () => dispatch(clearRedirectUrl()) 
 }) 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

@@ -1,16 +1,21 @@
 import React, { Component, Fragment } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import Login from './components/Login';
-import Notfound from './components/Notfound';
 import { connect } from 'react-redux';
 import { _getUsers, _getQuestions } from './utils/_DATA';
 import { saveUsersToStore, saveQuestionsToStore } from './actions/root';
 import PrivateRoute from './components/PrivateRoute';
+import PropTypes from 'prop-types';
 
 class App extends Component {
-  
+  static propTypes = {
+    authedUser: PropTypes.string.isRequired,
+    saveUsersToStore: PropTypes.func.isRequired,
+    saveQuestionsToStore: PropTypes.func.isRequired
+};
+
   componentDidMount = () => {
     _getUsers()
     .then(res => {
@@ -27,11 +32,10 @@ class App extends Component {
   render() {
     return (
      <BrowserRouter> 
-        <Switch>
+        <Fragment>
           <Route path='/login' component={Login} />
           <Route path='/' component={PrivateRoute} />
-          <Route component={Notfound} />          
-        </Switch>
+        </Fragment>
      </BrowserRouter> 
     );
   }

@@ -8,7 +8,8 @@ import Avatar from '../components/Avatar';
 
 class Nav extends Component {
     static propTypes = {
-        removeAuthedUser: PropTypes.func.isRequired
+        removeAuthedUser: PropTypes.func.isRequired,
+        authedUser: PropTypes.string.isRequired
     };
 
     // style stuff
@@ -52,11 +53,6 @@ class Nav extends Component {
                         <li className="nav-item">
                             <NavLink className="nav-link" to='/login' activeClassName='active' onClick={this.props.removeAuthedUser}>
                             Logout
-                            </NavLink>
-                        </li>
-                        <li className="nav-item">
-                            <NavLink className="nav-link" to='/dud' activeClassName='active'>
-                            Notfound
                             </NavLink>
                         </li>
                         </ul>

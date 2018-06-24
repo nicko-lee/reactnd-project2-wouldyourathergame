@@ -20,7 +20,7 @@ The key learnings I derived from this project were manifold. Here are some off t
 
 *  **Redux Dev Tools** - learnt how to use this browser extension that helped a lot with debugging and seeing the entire global application state in one place as well as a log of every single action dispatched that updated the state which makes for greater predictability which is the purpose of Redux in the first place.
 
-*  **React Router** - lots more experience using React Router as more complicated routing was needed this time compared to Project 1. Learnt about how `this.props.match.params` is a handy feature that comes for free on your props and that is what helped me get the question id off of the URL directly.
+*  **React Router** - lots more experience using React Router as more complicated routing was needed this time compared to Project 1. Learnt about how `this.props.match.params` is a handy feature that comes for free on your props and that is what helped me get the question id off of the URL directly. Furthermore `ownProps.location.pathname` came in very handy when trying to do redirects after a user action such as logging in. Location.pathname remembered the URL that was the point of entry so it was easy to redirect the user after they logged in.
 
 *  **React Loading Bar** - good experience pulling in an external package and wiring it up into the app. You needed to get the UI in and then also import the relevant reducers and action creators which came bundled with the package. Could easily change the style of the loading bar by passing it different props.
 
@@ -108,7 +108,7 @@ The provided file `_DATA.js` contained all the methods needed to interface with 
 
 - [x] A polling question links to details of that poll.
 
-- [ ] The polls in both categories are arranged from the most recently created (top) to the least recently created (bottom).
+- [x] The polls in both categories are arranged from the most recently created (top) to the least recently created (bottom).
 
 - [x] The details of the poll are available at questions/:question_id.
 
@@ -132,9 +132,9 @@ The provided file `_DATA.js` contained all the methods needed to interface with 
 
 - [x] When the user is logged in, the details of the poll are shown. If the user is logged out, he/she is asked to log in before before being able to access the poll.
 
-- [ ] The application asks the user to sign in and shows a 404 page if that poll does not exist. (Please keep in mind that new polls will not be accessible at their url because of the way the backend is set up in this application.)
+- [x] The application asks the user to sign in and shows a 404 page if that poll does not exist. (Please keep in mind that new polls will not be accessible at their url because of the way the backend is set up in this application.)
 
-- [ ] Upon voting in a poll, all of the information of the answered poll is displayed.
+- [x] Upon voting in a poll, all of the information of the answered poll is displayed.
 
 - [x] The user’s response is recorded and is clearly visible on the poll details page.
 

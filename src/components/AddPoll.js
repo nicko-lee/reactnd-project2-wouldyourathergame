@@ -9,7 +9,9 @@ class AddPoll extends Component {
     static propTypes = {
         authedUser: PropTypes.string.isRequired,
         showLoading: PropTypes.func.isRequired,
-        hideLoading: PropTypes.func.isRequired
+        hideLoading: PropTypes.func.isRequired,
+        addNewQuestionIdToUser: PropTypes.func.isRequired,
+        addNewQuestionIdToUser: PropTypes.func.isRequired
       };
 
     state = {
@@ -46,7 +48,6 @@ class AddPoll extends Component {
         // some validation warning message to make sure both options are filled in
         this.setState({ validationMsg: true });
     }
-
 }
 
     // style stuff
@@ -90,9 +91,6 @@ class AddPoll extends Component {
         textAlign: 'center',
         fontWeight: 'bold'
     }
-
-
-
 
     render() {
         return (

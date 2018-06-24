@@ -5,13 +5,17 @@ import { _saveQuestionAnswer } from '../utils/_DATA';
 import { addNewUserAnswerToStore, updateQuestionToBeAwareOfUserAnswer } from '../actions/root';
 import { showLoading, hideLoading } from 'react-redux-loading-bar' 
 import Avatar from '../components/Avatar';
-
+import Notfound from './Notfound';
 
 class InteractivePollItem extends Component {
     static propTypes = {
         authedUser: PropTypes.string.isRequired,
-        question: PropTypes.object.isRequired,
-        userAnswer: PropTypes.string.isRequired
+        question: PropTypes.object,
+        userAnswer: PropTypes.string.isRequired,
+        addNewUserAnswerToStore: PropTypes.func.isRequired,
+        updateQuestionToBeAwareOfUserAnswer: PropTypes.func.isRequired,
+        showLoading: PropTypes.func.isRequired,
+        hideLoading: PropTypes.func.isRequired
     };
 
     state = {
@@ -154,10 +158,13 @@ class InteractivePollItem extends Component {
         fontWeight: 'bolder'
     }
 
-
     render() {
         return (
-            <div className="poll-item">
+            <Fragment>
+            {this.props.question === undefined
+            ? <Notfound /> 
+                
+            : <div className="poll-item">
                 {this.props.userAnswer !== 'You haven\'t answered this yet'
                 ? 
                 <Fragment>  
@@ -227,7 +234,8 @@ class InteractivePollItem extends Component {
 
                 }
   
-            </div>
+            </div>}
+            </Fragment>
         );
 
     }
