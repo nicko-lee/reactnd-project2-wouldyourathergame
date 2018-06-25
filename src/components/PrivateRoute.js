@@ -38,7 +38,7 @@ class PrivateRoute extends Component {
                 <LoadingBar style={{backgroundColor: "blue"}}/>
                 <Switch>
                     <Route path='/' exact component={Dashboard} />
-                    <Route path='/new' component={AddPoll} />
+                    <Route path='/add' component={AddPoll} />
                     <Route path='/questions/:id' component={InteractivePollItem} />
                     <Route path='/leaderboard' component={Leaderboard} />
                     <Route component={Notfound} />

@@ -48,7 +48,7 @@ export const addNewQuestionIdToUser = (questionId, user) => ({
     value: { questionId, user }
 })
 
-// this action is for adding a user added answer to an already existing question
+// this action is for adding a user added answer to the user object in the store
 export const addNewUserAnswerToStore = (answer) => ({
     type: ADD_ANSWER_TO_USER,
     value: answer

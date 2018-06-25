@@ -208,7 +208,7 @@ The provided file `_DATA.js` contained all the methods needed to interface with 
 
 - [x] Components are modular and reusable.
 
-- [x] - [x] All code is formatted properly and is functional.
+- [x] All code is formatted properly and is functional.
 
 ## Deployed demo version
 
